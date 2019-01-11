@@ -21,7 +21,7 @@ class AddToCart extends Component {
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
         {(addToCart, { loading }) => (
-          <button disable={loading} onClick={addToCart}>
+          <button disabled={loading} onClick={addToCart}>
             Add{loading ? 'ing' : ''} To Cart
           </button>
         )}

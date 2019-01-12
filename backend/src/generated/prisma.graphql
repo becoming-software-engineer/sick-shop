@@ -23,7 +23,7 @@ type BatchPayload {
 type CartItem implements Node {
   id: ID!
   quantity: Int!
-  item(where: ItemWhereInput): Item!
+  item(where: ItemWhereInput): Item
   user(where: UserWhereInput): User!
 }
 
@@ -45,7 +45,7 @@ type CartItemConnection {
 
 input CartItemCreateInput {
   quantity: Int
-  item: ItemCreateOneInput!
+  item: ItemCreateOneInput
   user: UserCreateOneWithoutCartInput!
 }
 
@@ -56,7 +56,7 @@ input CartItemCreateManyWithoutUserInput {
 
 input CartItemCreateWithoutUserInput {
   quantity: Int
-  item: ItemCreateOneInput!
+  item: ItemCreateOneInput
 }
 
 """
@@ -440,6 +440,7 @@ input ItemUpdateInput {
 input ItemUpdateOneInput {
   create: ItemCreateInput
   connect: ItemWhereUniqueInput
+  disconnect: Boolean
   delete: Boolean
   update: ItemUpdateDataInput
   upsert: ItemUpsertNestedInput

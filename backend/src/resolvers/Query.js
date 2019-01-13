@@ -49,6 +49,18 @@ const Query = {
       throw new Error('You are not allowed to see this order');
     //4. return the order
     return order;
+  },
+  async orders(parent, args, ctx, info) {
+    const { userId } = ctx.request;
+    if (!userId) throw new Error('You must be signed in');
+    return ctx.db.query.orders(
+      {
+        where: {
+          user: { id: userId }
+        }
+      },
+      info
+    );
   }
 
   //   async items(parent, args, ctx, info) {
